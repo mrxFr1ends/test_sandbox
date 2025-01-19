@@ -107,7 +107,7 @@ export default [
       '@typescript-eslint/naming-convention': 'off',
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/no-unsafe-type-assertion': 'off',
-      // Какие-то супер строгие правила, которые не прям нужны
+      // РљР°РєРёРµ-С‚Рѕ СЃСѓРїРµСЂ СЃС‚СЂРѕРіРёРµ РїСЂР°РІРёР»Р°, РєРѕС‚РѕСЂС‹Рµ РЅРµ РїСЂСЏРј РЅСѓР¶РЅС‹
       'class-methods-use-this': 'off',
       '@typescript-eslint/class-methods-use-this': 'error',
       '@typescript-eslint/consistent-generic-constructors': [
