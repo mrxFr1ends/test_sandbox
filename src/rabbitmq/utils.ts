@@ -1,13 +1,9 @@
-import type {AmqpConfig} from '~/rabbitmq/types';
+import type {Options} from 'amqplib';
 import {getNumberRequireEnv, getStringRequireEnv} from '~/utils/env';
 
-export const amqpConfig: AmqpConfig = {
-  user: getStringRequireEnv('RABBITMQ_USERNAME'),
+export const amqpConfig: Options.Connect = {
+  username: getStringRequireEnv('RABBITMQ_USERNAME'),
   password: getStringRequireEnv('RABBITMQ_PASSWORD'),
-  host: getStringRequireEnv('RABBITMQ_HOST'),
+  hostname: getStringRequireEnv('RABBITMQ_HOST'),
   port: getNumberRequireEnv('RABBITMQ_PORT'),
-};
-
-export const getAmqpUrl = (config: Readonly<AmqpConfig>): string => {
-  return `amqp://${config.user}:${config.password}@${config.host}:${config.port}`;
 };

@@ -1,6 +1,4 @@
-import client, {type Connection, type Channel} from 'amqplib';
-import type {AmqpConfig} from '~/rabbitmq/types';
-import {getAmqpUrl} from '~/rabbitmq/utils';
+import client, {type Connection, type Channel, type Options} from 'amqplib';
 
 export class RabbitMqConnection {
   private static instance: RabbitMqConnection | undefined;
@@ -20,8 +18,8 @@ export class RabbitMqConnection {
     return this.instance ?? (this.instance = new this());
   }
 
-  public async connect(amqpConfig: Readonly<AmqpConfig>): Promise<void> {
-    this.connection = await client.connect(getAmqpUrl(amqpConfig));
+  public async connect(amqpConfig: Readonly<Options.Connect>): Promise<void> {
+    this.connection = await client.connect(amqpConfig);
     this._channel = await this.connection.createChannel();
   }
 

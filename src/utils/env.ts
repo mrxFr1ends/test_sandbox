@@ -8,7 +8,7 @@ const getRequireEnv = <T extends Types>(
   }
   switch (type) {
     case 'string':
-      // тип T и type связаны, T = string, а type = 'string' всегда.
+      // С‚РёРї T Рё type СЃРІСЏР·Р°РЅС‹, T = string, Р° type = 'string' РІСЃРµРіРґР°.
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       return value as T;
     case 'number': {
@@ -18,7 +18,7 @@ const getRequireEnv = <T extends Types>(
           `Environment variable ${key} with type '${type}' must be a valid number`,
         );
       }
-      // тип T и type связаны, T = number, а type = 'number' всегда.
+      // С‚РёРї T Рё type СЃРІСЏР·Р°РЅС‹, T = number, Р° type = 'number' РІСЃРµРіРґР°.
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       return number as T;
     }
@@ -28,7 +28,7 @@ const getRequireEnv = <T extends Types>(
           `Environment variable ${key} with type '${type}' must be a boolean ('true' or 'false')`,
         );
       }
-      // тип T и type связаны, T = boolean, а type = 'boolean' всегда.
+      // С‚РёРї T Рё type СЃРІСЏР·Р°РЅС‹, T = boolean, Р° type = 'boolean' РІСЃРµРіРґР°.
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       return (value === 'true') as T;
     }
