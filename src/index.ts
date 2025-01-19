@@ -4,8 +4,9 @@ import mysql from 'mysql2/promise';
 import {mysqlConfig} from '~/mysql/utils';
 import {RabbitMq} from '~/rabbitmq';
 import {createClient} from 'redis';
+import {redisConfig} from '~/redis/utils';
 
-const main = async (): Promise<void> => {
+const rabbitTest = async (): Promise<void> => {
   await RabbitMq.connect(amqpConfig);
   await RabbitMq.channel.assertQueue('test_second_queue');
 
@@ -22,7 +23,9 @@ const main = async (): Promise<void> => {
     Buffer.from('Hello World!'),
   );
   await RabbitMq.close();
+};
 
+const mysqlTest = async (): Promise<void> => {
   const mysqlConnection = await mysql.createConnection(mysqlConfig);
 
   await mysqlConnection.ping();
@@ -33,8 +36,10 @@ const main = async (): Promise<void> => {
   console.log(rows);
 
   await mysqlConnection.end();
+};
 
-  const redisConnection = await createClient({url: 'redis://localhost:6379'})
+const redisTest = async (): Promise<void> => {
+  const redisConnection = await createClient(redisConfig)
     .on('error', (err) => console.log('Redis Client Error', err))
     .connect();
   await redisConnection.set('test2', 'test1234');
@@ -51,6 +56,12 @@ const main = async (): Promise<void> => {
   console.log(results);
 
   await redisConnection.disconnect();
+};
+
+const main = async (): Promise<void> => {
+  await rabbitTest();
+  await mysqlTest();
+  await redisTest();
 };
 
 main();

@@ -4,13 +4,16 @@ import tseslint from 'typescript-eslint';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 /** @type {import('eslint').Linter.Config[]} */
-// @ts-expect-error tseslint.configs.recommended ругается
 export default [
   {
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.json',
-        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+        project: 'tsconfig.json',
+        projectService: {
+          allowDefaultProject: ['*.mjs'],
+          defaultProject: 'tsconfig.json',
+        },
       },
     },
   },
