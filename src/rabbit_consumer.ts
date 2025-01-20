@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import type {ConsumeMessage} from 'amqplib';
 import {RabbitMq} from '~/rabbitmq';
 import {amqpConfig} from '~/rabbitmq/utils';
@@ -12,10 +13,11 @@ const main = async (): Promise<void> => {
         return;
       }
       console.log(`Received: ${JSON.stringify(message)}`);
+      console.log(message.content.toString());
       RabbitMq.channel.ack(message);
     },
+    {noAck: false},
   );
-  await RabbitMq.close();
 };
 
 main();
