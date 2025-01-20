@@ -1,3 +1,25 @@
+type Types = string | number | boolean;
+
+type PrimitiveType<T> = T extends string
+  ? 'string'
+  : T extends number
+    ? 'number'
+    : T extends boolean
+      ? 'boolean'
+      : never;
+
+export const getStringRequireEnv = (key: string): string => {
+  return getRequireEnv<string>(key, 'string');
+};
+
+export const getNumberRequireEnv = (key: string): number => {
+  return getRequireEnv<number>(key, 'number');
+};
+
+export const getBooleanRequireEnv = (key: string): boolean => {
+  return getRequireEnv<boolean>(key, 'boolean');
+};
+
 const getRequireEnv = <T extends Types>(
   key: string,
   type: PrimitiveType<T>,
@@ -38,25 +60,3 @@ const getRequireEnv = <T extends Types>(
       );
   }
 };
-
-export const getStringRequireEnv = (key: string): string => {
-  return getRequireEnv<string>(key, 'string');
-};
-
-export const getNumberRequireEnv = (key: string): number => {
-  return getRequireEnv<number>(key, 'number');
-};
-
-export const getBooleanRequireEnv = (key: string): boolean => {
-  return getRequireEnv<boolean>(key, 'boolean');
-};
-
-type Types = string | number | boolean;
-
-type PrimitiveType<T> = T extends string
-  ? 'string'
-  : T extends number
-    ? 'number'
-    : T extends boolean
-      ? 'boolean'
-      : never;

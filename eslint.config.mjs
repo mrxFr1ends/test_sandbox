@@ -21,12 +21,11 @@ export default [
   {ignores: ['build/']},
   {languageOptions: {globals: globals.node}},
   pluginJs.configs.recommended,
-  // ...tseslint.configs.recommended,
-  // ...tseslint.configs.strict,
-  // ...tseslint.configs.strictTypeCheckedOnly,
-  // ...tseslint.configs.recommendedTypeCheckedOnly,
-  // ...tseslint.configs.stylisticTypeChecked,
-  ...tseslint.configs.all,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.strict,
+  ...tseslint.configs.strictTypeCheckedOnly,
+  ...tseslint.configs.recommendedTypeCheckedOnly,
+  ...tseslint.configs.stylisticTypeChecked,
   eslintPluginPrettierRecommended,
   {
     rules: {
@@ -104,9 +103,11 @@ export default [
       ],
       '@typescript-eslint/strict-boolean-expressions': 'error',
 
-      '@typescript-eslint/naming-convention': 'off',
-      '@typescript-eslint/consistent-type-definitions': 'off',
-      '@typescript-eslint/no-unsafe-type-assertion': 'off',
+      // '@typescript-eslint/naming-convention': 'off',
+      // '@typescript-eslint/consistent-type-definitions': 'off',
+      // '@typescript-eslint/no-unsafe-type-assertion': 'off',
+      // '@typescript-eslint/no-use-before-define': 'off',
+      // '@typescript-eslint/no-meaningless-void-operator': 'off',
       // Какие-то супер строгие правила, которые не прям нужны
       'class-methods-use-this': 'off',
       '@typescript-eslint/class-methods-use-this': 'error',
